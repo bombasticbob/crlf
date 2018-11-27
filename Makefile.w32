@@ -1,0 +1,6 @@
+
+all: crlf.exe
+
+crlf.exe: crlf.c
+	cl -DWIN32 crlf.c
+

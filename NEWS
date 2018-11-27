@@ -1,0 +1,25 @@
+Version 1.0
+  Initial release 11/11/2004
+Version 1.01
+  Major update to original, primarily to introduce the new
+  functionality and to make the application 100% compatible
+  with the *nix shells.  Recursion is now supported, using
+  wildcard specs for directory names, specified directly or
+  as 'globbed' arguments from the shell.  Quoted wildcard
+  file names (not globbed) search all sub-directories when
+  recursing, and apply the pattern to each sub-directory.
+
+  Therefore, to run 'crlf' on all '.txt' files, you would
+  use a command similar to the following:
+    crlf -r "*.txt"
+  This would recurse all directories, looking for files that
+  match the pattern "*.txt", and operate on them.  If the
+  quotes were not present, files matching "*.txt" would be
+  'globbed' by the shell, and any sub-directories found would
+  be searched with a file name specification of "*.*".  Since
+  it is unlikely you would have a directory name that matches
+  the pattern "*.txt" the 'globbed' option is meaningless, and
+  of very limited use.  The behavior of crlf is superior to
+  the 'globbing effect' caused by the shells.
+
+

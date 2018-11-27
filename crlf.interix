@@ -1,0 +1,118 @@
+CRLF(1)                         crlf                           CRLF(1)
+
+  ccrrllff
+
+  NNAAMMEE
+
+    crlf - convert <CRLF> delimited files to <LF> delimited, and
+           vice versa.
+
+  SSYYNNOOPPSSIISS
+
+    The crlf command was written to accomodate the different file
+    formats between UNIX-based and non-UNIX-based operating systems.
+    UNIX-based systems use a single line feed character to delimit a
+    single line of text, whereas systems such as MS-DOS use both a
+    carriage return and a line feed character in that sequence.
+
+    The crlf command allows you to convert between these formats
+    easily, and will create a backup for you automatically.
+
+
+  DDEESSCCRRIIPPTTIIOONN
+
+    The crlf command will take a text file that has been delimited
+    with both carriage return (ctrl+m) and line feed (ctrl+j) charac-
+    ters, and strip out all of the carriage returns.  This is the
+    standard UNIX format for plain text files.  Conversely, it can
+    take a text file in standard UNIX format, and add the carriage
+    returns in front of the line feed characters, which is standard
+    for MS-DOS and other similar operating systems.
+
+    After the conversion has completed, the old file will be left with
+    a '.bak' extension.  If a file with that name already exists, it
+    will be deleted before moving the old file.  The new (modified)
+    file will be given a name identical to the original file.
+
+    This command is a free utility, brought to you by Big Bad Bob.
+
+
+  UUSSAAGGEE
+
+    crlf [-[u|m][-[n|b][-h][-r][-q]] [--] filename 
+
+      where
+
+    'filename' is the file you want to convert (use quotes to prevent
+               globbing of file name patterns)
+
+       and
+
+    '-u' indicates that you want to convert to UNIX format (default)
+    '-m' indicates that you want to convert to MSDOS/Windows format
+    '-n' tells crlf NOT to create a backup (.bak) file
+    '-b' tells crlf to create a backup (.bak) file (default)
+    '-r' tells crlf to recurse sub-directories (similar to grep)
+    '-q' sets 'quiet mode
+    '-h' display usage information (aka 'help')
+
+
+    The ccrrllff(1) command has the following options:
+
+    --uu   convert to UNIX style (line-feeds only).  Without this
+         switch, the conversion will be to MS-DOS style (both carriage
+         return and line feed).
+    --uu   convert to UNIX style (line-feeds only).  This options is
+         mutually exclusive from the '-m' option, and is the default
+         for all unix-like operating systems.
+    --mm   convert to MSDOS/Windows style (both carriage return and
+         line feed).  This is the default for the WIN32 version only.
+    --nn   do not create a backup file.  See \'-b\', below.
+    --bb   create a backup file of the original (default).  The original
+         file will be re-named with a '.bak' extension added to its
+         name.  Any existing file with the same name as the '.bak'
+         file will be deleted.
+    --rr   recurse through sub-directories when searching for files to
+         convert.  This follows the same semantics as \'grep\' and
+         other standard utilities, which means the directory names
+         must also match the pattern.
+    --qq   set \'quiet mode\'.  Additional information, such as the
+         names of the files being processed, the names of the direc-
+         tories being recursed into, or the name of the file being
+         backed up will not be displayed.
+    --tt   This will \'trim\' all extra white space at the end of every
+         line in addition to converting the line ending.  This can be
+         extremely useful whenever certain ill-behaved editors inadvertently
+         insert extra white space at the end of a line.
+    --hh   display usage (help) information.
+
+
+  NNOOTTEESS
+
+    Recursion in the 'crlf' utility is accomplished in the normal way by
+    the use of 'file name globbing' as provided by the shell.  That is,
+    when you specify a file name pattern such as
+
+      crlf -r *.txt
+
+    the shell will expand '*.txt' into a list of file names and directory
+    names.  The '-r' switch then allows directories to be recursed.  Files
+    within these directories will use the pattern of '*', so any matching
+    directory will have ALL of its files operated on by 'crlf', recursing
+    any sub-directories.
+
+    Since this is not always desirable, crlf allows you to specify a file
+    specification as an argument, by quoting it, such as
+
+      crlf -r "*.txt"
+
+    Then, crlf will scan directories for files matching "*.txt", and will
+    recurse all of the sub-directories that it finds, without applying any
+    filter names to the sub-directories (only to the files it operates on).
+    This is actually a more intuitive implementation than the standard
+    'glob' method.
+
+
+
+1.0                      25 February, 2007                     CRLF(1)
+

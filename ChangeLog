@@ -1,0 +1,22 @@
+11/11/2004 - Release 1.0
+12/05/2004 - Release 1.01
+  a) created 'usage()' function
+  b) added '-m' switch (opposite of '-u')
+  c) changed default for *nix systems to '-u', and MS-DOS/Windows
+     to '-m' (for either CTRL+M or Microsoft, your choice)
+  d) added 'getarg' support for *NIX systems
+  e) added a 'getarg' equivalent for other systems that don't support
+     a 'getarg' function.
+  f) added wildcard and multiple file name support on the command
+     line, for more consistency with *nix command line utilities.
+  g) added '-r' to recurse sub-directories
+  h) added '-n' and '-b' to control backup / no backup ('-b' remains
+     the default)
+  i) Defined 'recursion' so that a file name specification passed in
+     quotes (i.e. not globbed) will recurse all directories with the
+     specified pattern, not just directories matching the pattern.
+     The behavior with 'globbed' files matches that of other utilities,
+     with a default specification of '*.*' added to any directory that
+     is passed on the command line.
+
+
